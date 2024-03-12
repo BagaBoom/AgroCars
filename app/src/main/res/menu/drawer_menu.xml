@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_main"
+            android:title="Головна" />
+        <item
+            android:id="@+id/menu_cars"
+            android:title="Транспорт" />
+        <item
+            android:id="@+id/menu_services"
+            android:title="Обслуговування транспорта" />
+        <item
+            android:id="@+id/menu_drivers"
+            android:title="Водії" />
+        <item
+            android:id="@+id/menu_categories_cars"
+            android:title="Категорії транспорту" />
+    </group>
+</menu>
