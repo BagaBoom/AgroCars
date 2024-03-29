@@ -1,6 +1,6 @@
 package com.radchuk.myapplication.data
 
 data class CarCategory(
-    val id: Int?,
+    val id: Long?,
     val name: String
 )

@@ -15,12 +15,6 @@ import com.radchuk.myapplication.ui.fragments.MainFragment
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-
-
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             R.string.navigation_drawer_close
         )
 
+        binding.toolbar.title = "Головна"
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, MainFragment())
             .commit()
@@ -42,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_main -> {
+                    binding.toolbar.title = "Головна"
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, MainFragment())
@@ -54,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_categories_cars ->{
+                    binding.toolbar.title = "Категорії"
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, CategotiesCarFragment())
@@ -66,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -74,8 +70,6 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
-
 
 
 }
