@@ -11,6 +11,7 @@ import com.radchuk.myapplication.R
 import com.radchuk.myapplication.databinding.ActivityMainBinding
 import com.radchuk.myapplication.ui.fragments.CategotiesCarFragment
 import com.radchuk.myapplication.ui.fragments.MainFragment
+import com.radchuk.myapplication.ui.fragments.VehicleFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -46,7 +47,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_cars -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
-
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, VehicleFragment())
+                        .commit()
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_categories_cars ->{

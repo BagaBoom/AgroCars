@@ -22,36 +22,54 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import androidx.appcompat.app.AlertDialog
+import java.util.Objects
 
-class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractionListener {
+class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractionListener  {
 
     private lateinit var binding: FragmentCategotiesCarBinding
     private lateinit var adapter: CarCategoryAdapter
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCategotiesCarBinding.inflate(inflater,container,false)
-
-
-
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = CarCategoryAdapter(this)
         binding.recyclerView.adapter = adapter
-
-
         updateListCarCategory()
-
-
-
+        binding.buttonAddCategory.setOnClickListener {
+            showAddDialog()
+        }
         return binding.root
     }
 
     override fun onEditClicked(category: CarCategory) {
         showEditDialog(category)
+    }
+    private fun showAddDialog(){
+        val editText = EditText(requireContext())
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Add Category")
+            .setView(editText)
+            .setPositiveButton("Add") { dialog, _ ->
+                val categoryName = editText.text.toString()
+                val newCategory = CarCategory(
+                    null,
+                    categoryName
+                )
+                if (categoryName.isNotBlank()) {
+                    addCategory(newCategory)
+                    dialog.dismiss()
+                } else {
+                    editText.error = "Category name cannot be empty"
+                }
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
     private fun showEditDialog(category: CarCategory) {
         val editText = EditText(requireContext())
@@ -80,7 +98,6 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
         ApiClient.apiService.updateCategory(categoryId, updatedCategory).enqueue(object : Callback<CarCategory> {
             override fun onResponse(call: Call<CarCategory>, response: Response<CarCategory>) {
                 if (response.isSuccessful) {
-                    // Обработайте успешное редактирование
                     updateListCarCategory()
                 } else {
                     Log.i("MyLog", "Failed to edit category: ${response.errorBody()}")
@@ -93,6 +110,7 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
         })
     }
 
+
     override fun onDeleteClicked(category: CarCategory) {
         //showDeleteConfirmationDialog(category)
         val dialog = DeleteConfirmationDialogFragment(category, object : DeleteConfirmationDialogFragment.OnDeleteConfirmationListener {
@@ -104,6 +122,7 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
         dialog.show(requireActivity().supportFragmentManager, "DeleteConfirmationDialog")
 
     }
+
     private fun updateListCarCategory(){
         ApiClient.apiService.getCarCategories().enqueue(object : Callback<List<CarCategory>> {
             override fun onResponse(call: Call<List<CarCategory>>, response: Response<List<CarCategory>>) {
@@ -139,8 +158,20 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
         })
     }
 
-
-
+    private fun addCategory(category: CarCategory){
+        ApiClient.apiService.addCarCategories(category).enqueue(object : Callback<CarCategory> {
+            override fun onResponse(call: Call<CarCategory>, response: Response<CarCategory>) {
+                if (response.isSuccessful) {
+                    updateListCarCategory()
+                } else {
+                    Log.i("MyLog", "Failed to delete category: ${response.errorBody()}")
+                }
+            }
+            override fun onFailure(call: Call<CarCategory>, t: Throwable) {
+                Log.i("MyLog", "Network request failed: ${t.message}")
+            }
+        })
+    }
 
 
 

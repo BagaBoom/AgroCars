@@ -13,6 +13,9 @@ interface CarCategotiesServise{
     @GET("car-categories")
     fun getCarCategories(): Call<List<CarCategory>>
 
+    @GET("car-categories/{name}")
+    fun getCarGategoryByName(@Path("name") name: String) : Call<CarCategory>
+
     @POST("car-categories")
     fun addCarCategories(@Body request: CarCategory) : Call<CarCategory>
 

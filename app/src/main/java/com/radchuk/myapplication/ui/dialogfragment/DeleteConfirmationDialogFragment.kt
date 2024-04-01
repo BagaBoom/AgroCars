@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.radchuk.myapplication.data.CarCategory
+import com.radchuk.myapplication.data.Vehicle
 
 class DeleteConfirmationDialogFragment(private val category: CarCategory, private val listener: OnDeleteConfirmationListener) : DialogFragment() {
 

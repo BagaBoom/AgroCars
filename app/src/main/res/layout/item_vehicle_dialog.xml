@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_vehicle_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editMake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Марка" />
+
+    <EditText
+        android:id="@+id/editModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Модель" />
+
+    <EditText
+        android:id="@+id/editYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Рік випуску" />
+
+    <EditText
+        android:id="@+id/editRegistrationNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Реєстраційний номер" />
+
+    <EditText
+        android:id="@+id/editCurrentLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Поточне розташування" />
+
+    <EditText
+        android:id="@+id/editFuelType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Тип палива" />
+
+    <EditText
+        android:id="@+id/editTankVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Об'єм бака(л)" />
+
+    <EditText
+        android:id="@+id/editEngineCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Об'єм двигуна" />
+
+    <EditText
+        android:id="@+id/editCurrentStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Поточний стан" />
+
+    <EditText
+        android:id="@+id/editCategoryId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Категорія техніки" />
+
+</LinearLayout>
