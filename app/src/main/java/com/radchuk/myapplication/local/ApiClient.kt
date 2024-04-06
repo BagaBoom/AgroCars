@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-    //const val BASE_URL = "http://10.1.1.94:8080/api/" //work
+    //const val BASE_URL = "http://10.1.3.235:8080/api/" //work
     //const val BASE_URL = "http://172.20.10.11:8080/api/" //myInetIPhone
     const val BASE_URL = "http://192.168.0.104:8080/api/" //myHome
 

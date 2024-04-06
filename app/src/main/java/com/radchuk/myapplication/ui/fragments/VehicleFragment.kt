@@ -56,13 +56,11 @@ class VehicleFragment : Fragment(), VehicleAdapter.OnVehicleInteractionListener 
                 } else {
                     startActivity(Intent(requireActivity(), LoginActivity::class.java))
                     requireActivity().finish()
-                    Log.i("MyLog", "Failed to fetch car categories: ${response.errorBody()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Vehicle>>, t: Throwable) {
                 Log.i("MyLog", "Network request failed: ${t.message}")
-
             }
         })
     }
@@ -137,8 +135,6 @@ class VehicleFragment : Fragment(), VehicleAdapter.OnVehicleInteractionListener 
                                     engineCapacityFloat, currentStatus, newCarCategory)
                                 addVehicle(addVehicle)
                                 dialog.dismiss()
-                            } else {
-                                Log.i("MyLog", "Failed to edit category: ${response.errorBody()}")
                             }
                         }
 
@@ -271,8 +267,6 @@ class VehicleFragment : Fragment(), VehicleAdapter.OnVehicleInteractionListener 
             override fun onResponse(call: Call<Vehicle>, response: Response<Vehicle>) {
                 if (response.isSuccessful) {
                     updateListVehicle()
-                } else {
-                    Log.i("MyLog", "Failed to edit category: ${response.errorBody()}")
                 }
             }
 
@@ -286,8 +280,6 @@ class VehicleFragment : Fragment(), VehicleAdapter.OnVehicleInteractionListener 
             override fun onResponse(call: Call<Vehicle>, response: Response<Vehicle>) {
                 if (response.isSuccessful) {
                     updateListVehicle()
-                } else {
-                    Log.i("MyLog", "Failed to edit category: ${response.errorBody()}")
                 }
             }
 
@@ -318,7 +310,6 @@ class VehicleFragment : Fragment(), VehicleAdapter.OnVehicleInteractionListener 
                 } else {
                     startActivity(Intent(requireActivity(), LoginActivity::class.java))
                     requireActivity().finish()
-                    Log.i("MyLog", "Failed to fetch car categories: ${response.errorBody()}")
                 }
             }
 

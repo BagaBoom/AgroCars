@@ -1,6 +1,7 @@
 package com.radchuk.myapplication.local
 
 
+import com.radchuk.myapplication.data.CarCategory
 import com.radchuk.myapplication.data.Vehicle
 import retrofit2.Call
 import retrofit2.http.Body
@@ -14,6 +15,10 @@ interface VehicleServise {
 
     @GET("vehicle")
     fun getVehicles(): Call<List<Vehicle>>
+
+
+    @GET("vehicle/reg/{number}")
+    fun getVehicleByRegistrationNumber(@Path("number") number: String) : Call<Vehicle>
 
     @POST("vehicle")
     fun addVehicle(@Body request: Vehicle) : Call<Vehicle>

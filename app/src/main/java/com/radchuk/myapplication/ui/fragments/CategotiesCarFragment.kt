@@ -99,8 +99,6 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
             override fun onResponse(call: Call<CarCategory>, response: Response<CarCategory>) {
                 if (response.isSuccessful) {
                     updateListCarCategory()
-                } else {
-                    Log.i("MyLog", "Failed to edit category: ${response.errorBody()}")
                 }
             }
 
@@ -115,8 +113,7 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
         //showDeleteConfirmationDialog(category)
         val dialog = DeleteConfirmationDialogFragment(category, object : DeleteConfirmationDialogFragment.OnDeleteConfirmationListener {
             override fun onConfirmDelete(category: CarCategory) {
-                Log.d("MyLog", "id = ${category.id!!}")
-                deleteCategory(category.id)
+                deleteCategory(category.id!!)
             }
         })
         dialog.show(requireActivity().supportFragmentManager, "DeleteConfirmationDialog")
@@ -132,7 +129,6 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
                 } else {
                     startActivity(Intent(requireActivity(),LoginActivity::class.java))
                     requireActivity().finish()
-                    Log.i("MyLog", "Failed to fetch car categories: ${response.errorBody()}")
                 }
             }
 
@@ -147,8 +143,6 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
             override fun onResponse(call: Call<CarCategory>, response: Response<CarCategory>) {
                 if (response.isSuccessful) {
                     updateListCarCategory()
-                } else {
-                    Log.i("MyLog", "Failed to delete category: ${response.errorBody()}")
                 }
             }
 
@@ -163,8 +157,6 @@ class CategotiesCarFragment : Fragment(),CarCategoryAdapter.OnCategoryInteractio
             override fun onResponse(call: Call<CarCategory>, response: Response<CarCategory>) {
                 if (response.isSuccessful) {
                     updateListCarCategory()
-                } else {
-                    Log.i("MyLog", "Failed to delete category: ${response.errorBody()}")
                 }
             }
             override fun onFailure(call: Call<CarCategory>, t: Throwable) {

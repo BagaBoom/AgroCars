@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.radchuk.myapplication.R
 import com.radchuk.myapplication.databinding.ActivityMainBinding
 import com.radchuk.myapplication.ui.fragments.CategotiesCarFragment
+import com.radchuk.myapplication.ui.fragments.DriverFragment
 import com.radchuk.myapplication.ui.fragments.MainFragment
 import com.radchuk.myapplication.ui.fragments.VehicleFragment
 
@@ -45,7 +46,17 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@setNavigationItemSelectedListener true
                 }
+                R.id.menu_drivers -> {
+                    binding.toolbar.title = "Водії"
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, DriverFragment())
+                        .commit()
+                    return@setNavigationItemSelectedListener true
+                }
                 R.id.menu_cars -> {
+                    binding.toolbar.title = "Транспорт"
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     supportFragmentManager.beginTransaction()

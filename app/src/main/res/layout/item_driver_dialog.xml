@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_vehicle_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editFirtsName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ім'я" />
+
+    <EditText
+        android:id="@+id/editLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Прізвище" />
+
+    <EditText
+        android:id="@+id/editLicenseNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Номер ліцензії" />
+
+    <EditText
+        android:id="@+id/editStatusDriver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Статус" />
+
+    <EditText
+        android:id="@+id/editVehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Транспорт (Не обовязкове)" />
+
+
+
+</LinearLayout>

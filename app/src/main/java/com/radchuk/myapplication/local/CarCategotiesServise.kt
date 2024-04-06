@@ -13,7 +13,7 @@ interface CarCategotiesServise{
     @GET("car-categories")
     fun getCarCategories(): Call<List<CarCategory>>
 
-    @GET("car-categories/{name}")
+    @GET("car-categories/name/{name}")
     fun getCarGategoryByName(@Path("name") name: String) : Call<CarCategory>
 
     @POST("car-categories")
