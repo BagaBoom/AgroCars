@@ -13,8 +13,8 @@ class DriverAdapter(private val listener: OnDriverInteractionListener) : Recycle
 
     private var drivers: List<Driver> = emptyList()
 
-    fun updateData(newVehicles: List<Driver>) {
-        drivers = newVehicles
+    fun updateData(newDrivers: List<Driver>) {
+        drivers = newDrivers
         notifyDataSetChanged()
     }
 

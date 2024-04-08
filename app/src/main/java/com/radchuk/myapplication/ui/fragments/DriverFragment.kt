@@ -17,12 +17,10 @@ import com.radchuk.myapplication.databinding.FragmentDriverBinding
 import com.radchuk.myapplication.local.ApiClient
 import com.radchuk.myapplication.ui.activity.LoginActivity
 import com.radchuk.myapplication.ui.adapters.DriverAdapter
-import com.radchuk.myapplication.ui.adapters.VehicleAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import androidx.appcompat.app.AlertDialog
-import com.radchuk.myapplication.data.CarCategory
 
 class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
 
@@ -34,7 +32,6 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDriverBinding.inflate(inflater, container, false)
-
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = DriverAdapter(this)
         binding.recyclerView.adapter = adapter
@@ -42,7 +39,6 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
         binding.buttonAddDriver.setOnClickListener {
             showAddDriver()
         }
-
 
         return binding.root
     }
@@ -58,7 +54,6 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
                     requireActivity().finish()
                 }
             }
-
             override fun onFailure(call: Call<List<Driver>>, t: Throwable) {
                 Log.i("MyLog", "Network request failed: ${t.message}")
             }
@@ -73,12 +68,9 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
         val editTextStatusDriver : EditText = dialogView.findViewById(R.id.editStatusDriver)
         val editTextVehicle : EditText = dialogView.findViewById(R.id.editVehicle)
 
-
         AlertDialog.Builder(requireContext())
             .setTitle("Додати Водія")
             .setView(dialogView)
-
-
             .setPositiveButton("Save") { dialog, _ ->
                 val firstName = editTextFirtsName.text
                 val lastName = editTextLastName.text
@@ -90,7 +82,6 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
                     Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
-
 
                 var newVehicle : Vehicle?
                 if(vehicle.isNotBlank()){
@@ -143,19 +134,15 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
         val editTextStatusDriver : EditText = dialogView.findViewById(R.id.editStatusDriver)
         val editTextVehicle : EditText = dialogView.findViewById(R.id.editVehicle)
 
-
         editTextFirtsName.setText(driver.firstName)
         editTextLastName.setText(driver.lastName)
         editTextLicenseNumber.setText(driver.licenseNumber)
         editTextStatusDriver.setText(driver.statusDriver)
         editTextVehicle.setText(driver.vehicle?.registrationNumber)
 
-
         AlertDialog.Builder(requireContext())
             .setTitle("Редагувати Водія")
             .setView(dialogView)
-
-
             .setPositiveButton("Save") { dialog, _ ->
                 val firstName = editTextFirtsName.text.toString()
                 val lastName = editTextLastName.text.toString()
@@ -167,7 +154,6 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
                     Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
-
 
                 var newVehicle : Vehicle?
                 if(driver.vehicle?.registrationNumber != vehicle){
@@ -216,16 +202,12 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
                     editDriver(updateDriver)
                     dialog.dismiss()
                 }
-
-
-
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
     }
-
 
     private fun showDeleteDialog(driver: Driver){
         android.app.AlertDialog.Builder(requireContext())
@@ -237,9 +219,8 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
             .setNegativeButton("No", null)
             .create()
             .show()
-
-
     }
+
     private fun deleteDriver(driver: Driver){
         ApiClient.apiService.deleteDriver(driver.id!!).enqueue(object : Callback<Driver> {
             override fun onResponse(call: Call<Driver>, response: Response<Driver>) {
@@ -259,6 +240,7 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
         })
 
     }
+
     private fun addDriver(driver: Driver){
         ApiClient.apiService.addDriver(driver).enqueue(object : Callback<Driver> {
             override fun onResponse(call: Call<Driver>, response: Response<Driver>) {
@@ -294,6 +276,4 @@ class DriverFragment : Fragment(),DriverAdapter.OnDriverInteractionListener {
     override fun onDeleteClicked(driver: Driver) {
         showDeleteDialog(driver)
     }
-
-
 }

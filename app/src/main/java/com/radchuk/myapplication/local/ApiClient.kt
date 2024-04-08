@@ -1,7 +1,6 @@
 package com.radchuk.myapplication.local
 
 import android.content.Context
-import android.util.Log
 import com.radchuk.myapplication.App
 import com.radchuk.myapplication.data.RefreshTokenRequest
 import okhttp3.OkHttpClient
@@ -11,9 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-    //const val BASE_URL = "http://10.1.3.235:8080/api/" //work
+    const val BASE_URL = "http://10.1.3.235:8080/api/" //work
     //const val BASE_URL = "http://172.20.10.11:8080/api/" //myInetIPhone
-    const val BASE_URL = "http://192.168.0.104:8080/api/" //myHome
+    //const val BASE_URL = "http://192.168.0.104:8080/api/" //myHome
 
     private var okHttpClient: OkHttpClient = createOkHttpClient()
 
@@ -33,7 +32,6 @@ object ApiClient {
             val accessToken = getAccessToken()
             val refreshToken = getRefreshToken()
             if (accessToken.isNotEmpty()) {
-                //Log.d("MyLog", "Main = " + accessToken)
                 requestBuilder.header("Authorization", "Bearer $accessToken")
             }
             val request = requestBuilder.build()
@@ -47,7 +45,6 @@ object ApiClient {
                     .header("Authorization", "Bearer $refreshedTokenAAA")
                     .build()
                 response = chain.proceed(newRequest)
-                //Log.d("MyLog", "NewToken $refreshedTokenAAA")
             }
             response
         }

@@ -16,5 +16,8 @@
         <item
             android:id="@+id/menu_categories_cars"
             android:title="Категорії транспорту" />
+        <item
+            android:id="@+id/menu_map"
+            android:title="Карта" />
     </group>
 </menu>

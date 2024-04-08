@@ -1,7 +1,6 @@
 package com.radchuk.myapplication.local
 
 
-import com.radchuk.myapplication.data.CarCategory
 import com.radchuk.myapplication.data.Vehicle
 import retrofit2.Call
 import retrofit2.http.Body

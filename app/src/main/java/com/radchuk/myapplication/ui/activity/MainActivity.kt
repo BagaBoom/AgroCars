@@ -12,6 +12,8 @@ import com.radchuk.myapplication.databinding.ActivityMainBinding
 import com.radchuk.myapplication.ui.fragments.CategotiesCarFragment
 import com.radchuk.myapplication.ui.fragments.DriverFragment
 import com.radchuk.myapplication.ui.fragments.MainFragment
+import com.radchuk.myapplication.ui.fragments.MapFragment
+import com.radchuk.myapplication.ui.fragments.ServiceFragment
 import com.radchuk.myapplication.ui.fragments.VehicleFragment
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +57,15 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@setNavigationItemSelectedListener true
                 }
+                R.id.menu_services ->{
+                    binding.toolbar.title = "Обслуговування транспорта"
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, ServiceFragment())
+                        .commit()
+                    return@setNavigationItemSelectedListener true
+                }
                 R.id.menu_cars -> {
                     binding.toolbar.title = "Транспорт"
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -69,6 +80,14 @@ class MainActivity : AppCompatActivity() {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, CategotiesCarFragment())
+                        .commit()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.menu_map -> {
+                    binding.toolbar.title = "Карта"
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, MapFragment())
                         .commit()
                     return@setNavigationItemSelectedListener true
                 }

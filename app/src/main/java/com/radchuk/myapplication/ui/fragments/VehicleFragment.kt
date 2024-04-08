@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +17,6 @@ import com.radchuk.myapplication.data.Vehicle
 import com.radchuk.myapplication.databinding.FragmentVehicleBinding
 import com.radchuk.myapplication.local.ApiClient
 import com.radchuk.myapplication.ui.activity.LoginActivity
-import com.radchuk.myapplication.ui.adapters.CarCategoryAdapter
 import com.radchuk.myapplication.ui.adapters.VehicleAdapter
 import retrofit2.Call
 import retrofit2.Callback
